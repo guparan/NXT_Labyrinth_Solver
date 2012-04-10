@@ -48,3 +48,32 @@ void turn(sens s)
   }
 }
 
+
+int detection_ligne_blanche()
+{
+     int res;
+    char lum = SENSOR_4;
+         if(lum > light_white)
+         {
+             res=1;
+         }
+         else
+             res=0;
+    return res;
+}
+
+
+void solve_labyrinth()
+{
+
+
+
+
+}
+
+
+void main()
+{
+
+
+}
