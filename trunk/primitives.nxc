@@ -14,7 +14,7 @@ enum sens{droite, gauche};
 char speed_movement_rot = 50; //a regler
 char speed_movement_back = 20;  //a regler
 char speed_movement = 50;  //a regler
-char duree_fw = 1500;  // aregler
+char duree_fw = 1500;  // a regler
 char duree_rot = 500;  // a regler
 
 char light_white = 45;  // a regler
@@ -33,47 +33,19 @@ void turn(sens s)
 {
   if(s==gauche)
   {
-    OnRev(Out_A,speed_movement_rot);
-    OnFwd(Out_B,speed_movement_rot);
+    OnRev(OUT_A,speed_movement_rot);
+    OnFwd(OUT_B,speed_movement_rot);
     Wait(duree_rot);
-    Off(Out_A);
-    Off(Out_B);
+    Off(OUT_A);
+    Off(OUT_B);
   }
   else  // if(s==droite)
   {
-     OnRev(Out_B,speed_movement_rot);
-     OnFwd(Out_B,speed_movement_rot);
-     Off(Out_B);
-     Off(Out_A);
+     OnRev(OUT_B,speed_movement_rot);
+     OnFwd(OUT_B,speed_movement_rot);
+     Off(OUT_B);
+     Off(OUT_A);
   }
 }
 
-
-int detection_ligne_blanche()
-{
-     int res;
-    char lum = SENSOR_4;
-         if(lum > light_white)
-         {
-             res=1;
-         }
-         else
-             res=0;
-    return res;
-}
-
-
-void solve_labyrinth()
-{
-
-
-
-
-}
-
-
-void main()
-{
-
-
-}
+task main() {}
