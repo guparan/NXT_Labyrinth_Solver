@@ -11,40 +11,49 @@
 // sens de rotation
 enum sens{droite, gauche};
 
-char speed_movement_rot = 50; //à regler
-char speed_movement_back = 20;  //à regler
-char speed_movement = 50;  //à regler
-char duree_fw = 1500;  // à regler
+char speed_movement_rot = 70; //à regler
+char speed_movement_back = 100;  //à regler
+char speed_movement = 100;  //à regler
+char duree_fw = 15000;  // à regler
 char duree_rot = 500;  // à regler
 
 char light_white = 45;  // à regler
 
 
+void avancerReg(byte output, char pwr, byte regmode)
+{
+     OnRevReg(output, pwr, regmode);
+}
+
+void reculerReg(byte output, char pwr, byte regmode)
+{
+     OnFwdReg(output, pwr, regmode);
+}
+
 //fait avancer le robot d'une certaine distance
 void avancer(int duree)
 {
-   OnFwdReg(OUT_AB, speed_movement,OUT_REGMODE_SYNC);
+   OnFwdReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
    Wait(duree);
    Off(OUT_AB);
 }
 
 // fait tourner le robot de
-void turn(sens s)
+void turn(sens s, int duree)
 {
   if(s==gauche)
   {
     OnRev(OUT_A, speed_movement_rot);
     OnFwd(OUT_B, speed_movement_rot);
-    Wait(duree_rot);
-    Off(OUT_A);
-    Off(OUT_B);
+    Wait(duree);
+    Off(OUT_AB);
   }
-  else  // if(s==droite)
+  else if(s==droite)
   {
      OnRev(OUT_B, speed_movement_rot);
-     OnFwd(OUT_B, speed_movement_rot);
-     Off(OUT_B);
-     Off(OUT_A);
+     OnFwd(OUT_A, speed_movement_rot);
+    Wait(duree);
+     Off(OUT_AB);
   }
 }
 
@@ -115,11 +124,14 @@ void solve_labyrinth()
 
 task main()
 {
-     avancer(duree_fw);
-     turn(gauche);
-     turn(droite);
-
-
-
+     avancer(SEC_2);
+     Wait(SEC_2);
+     turn(gauche, MS_700);
+     Wait(SEC_2);
+     avancer(SEC_2);
+     Wait(SEC_2);
+     turn(droite, MS_700);
+     Wait(SEC_2);
+     avancer(SEC_2);
 }
 
