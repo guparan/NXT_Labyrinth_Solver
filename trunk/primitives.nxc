@@ -16,50 +16,62 @@ char speed_movement_back = 100;  //à regler
 char speed_movement = 100;  //à regler
 char duree_fw = 15000;  // à regler
 char duree_rot = 500;  // à regler
-
 char light_white = 45;  // à regler
 
 
-void avancerReg(byte output, char pwr, byte regmode)
-{
-     OnRevReg(output, pwr, regmode);
+void avancerReg(byte output, char pwr, byte regmode){
+     OnRevReg(output,pwr,regmode);
 }
 
-void reculerReg(byte output, char pwr, byte regmode)
-{
-     OnFwdReg(output, pwr, regmode);
+
+void reculerReg(byte output, char pwr, byte regmode){
+     OnFwdReg(output,pwr,regmode);
 }
+
 
 //fait avancer le robot d'une certaine distance
-void avancer(int duree)
-{
-   OnFwdReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
+void avancer(int duree){
+   avancerReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
    Wait(duree);
    Off(OUT_AB);
 }
 
+void reculer(int duree){
+     reculerReg(OUT_AB, speed_movement,OUT_REGMODE_SYNC);
+     Wait(duree);
+     Off(OUT_AB);
+}
+
+void one_motor_Rev(byte output, char pwr){
+    OnFwd(output,pwr);
+}
+
+
+void one_motor_Fwd(byte output, char pwr){
+    OnRev(output,pwr);
+}
+
+
 // fait tourner le robot de
-void turn(sens s, int duree)
-{
+void turn(sens s, int duree){
   if(s==gauche)
   {
-    OnRev(OUT_A, speed_movement_rot);
-    OnFwd(OUT_B, speed_movement_rot);
+    one_motor_Fwd(OUT_A, speed_movement_rot);
+    one_motor_Rev(OUT_B, speed_movement_rot);
     Wait(duree);
     Off(OUT_AB);
   }
   else if(s==droite)
   {
-     OnRev(OUT_B, speed_movement_rot);
-     OnFwd(OUT_A, speed_movement_rot);
-    Wait(duree);
+     one_motor_Fwd(OUT_B, speed_movement_rot);
+     one_motor_Rev(OUT_A, speed_movement_rot);
+     Wait(duree);
      Off(OUT_AB);
   }
 }
 
 
-int detection_ligne_blanche()
-{
+int detection_ligne_blanche(){
      int res;
     char lum = SENSOR_4;
          if(lum > light_white)
@@ -71,9 +83,9 @@ int detection_ligne_blanche()
     return res;
 }
 
+
 /*
-void solve_labyrinth()
-{
+void solve_labyrinth(){
      int right;
      int left;
      int front; //devant
@@ -83,23 +95,20 @@ void solve_labyrinth()
      front=0;
      SetSensorLight(IN_4);
      
-         while (detection_ligne_blanche() == 1)
-         {
+         while (detection_ligne_blanche() == 1){
              avancer(duree_fw);
          }
          front=0; //on ne peut plus avancer
          turn(gauche);
          
-             if(detection_ligne_blanche() == 0)
-             {
+             if(detection_ligne_blanche() == 0){
                  left=1;//on peut tourner a gauche
              }
              //else
                  //left=0;
          turn(droite);//on revient en position initial
          turn(droite);
-             if(detection_ligne_blanche()==0)
-             {
+             if(detection_ligne_blanche()==0){
                  right=1;//on peut tourner à droite
              }
              //else
@@ -107,13 +116,11 @@ void solve_labyrinth()
 
          turn(left);//on revient en position initiale
 
-         if(right==1)
-         {
+         if(right==1){
              turn(droite);
              solve_labyrinth();
          }
-         else if( left==1)
-         {
+         else if( left==1){
               turn(gauche);
               solve_labyrinth;
          }
@@ -122,15 +129,14 @@ void solve_labyrinth()
 }
 */
 
-task main()
-{
+task main(){
      avancer(SEC_2);
      Wait(SEC_2);
-     turn(gauche, MS_700);
+     turn(gauche,750);
      Wait(SEC_2);
      avancer(SEC_2);
      Wait(SEC_2);
-     turn(droite, MS_700);
+     turn(droite,750);
      Wait(SEC_2);
      avancer(SEC_2);
 }
