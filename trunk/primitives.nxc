@@ -73,7 +73,7 @@ void turn(sens s, int duree){
 
 int detection_ligne_blanche(){
      int res;
-    char lum = SENSOR_4;
+    char lum = SENSOR_2;
          if(lum > light_white)
          {
              res=1;
@@ -139,5 +139,6 @@ task main(){
      turn(droite,750);
      Wait(SEC_2);
      avancer(SEC_2);
+     detection_ligne_blanche();
 }
 
