@@ -14,6 +14,7 @@ Coord initialiserCoord()
 	c.y = -1;
 return c;
 }
+
 Pile creerPile()
 {
 	Pile p;
