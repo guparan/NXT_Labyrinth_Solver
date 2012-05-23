@@ -1,0 +1,137 @@
+//Solveur de Labyrinth
+
+
+//Disposition des moteurs :
+// A :  gauche
+// B :  droite
+
+// angle négatif : sens trigo
+// angle positif : sens anti trigo
+
+// sens de rotation
+enum sens{droite, gauche};
+
+char speed_movement_rot = 70; //à regler
+char speed_movement_back = 100;  //à regler
+char speed_movement = 100;  //à regler
+char duree_fw = 15000;  // à regler
+char duree_rot = 500;  // à regler
+char light_white = 45;  // à regler
+//taille du robot : 19,5 cm * 13 cm   (longeur * largeur)
+//centre de pivotement : 8,5cm(distance du)
+
+
+//    /!\ LE CENTRE DE PIVOTEMENT N'EST PAS AU CENTRE DU ROBOT
+/*SHEMA
+__________________________________ _ _ _ _ _ _ _ _ _ _ _ _ _ _ ______
+   |                       |                                      |
+   |                       |                                      |
+   |                       |                                      |
+   |          _|_  _  _  _ | _ _ _ _ _ _ _ _ _ ____Pos avt rotat° |   19,5cm
+   |           |           |                     |                |
+   |          _|_    _  _ _|_  ___  pos apres rotat°              |
+   |           |           |    |                |                |
+   |                       |    | 8,5 cm         |                |
+___|___________ ___________|____|___          ___|___          ___|___
+
+La position est la position du centre géométrique du robot
+c.a.d le centre d'un rectangle 19,5*13 cm²
+*/
+
+//fait avancer le robot d'une certaine distance
+void avancer(int duree){
+   OnRevReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
+   Wait(duree);
+   Off(OUT_AB);
+}
+
+void reculer(int duree){
+     OnFwdReg(OUT_AB, speed_movement,OUT_REGMODE_SYNC);
+     Wait(duree);
+     Off(OUT_AB);
+}
+
+// fait tourner le robot de 90° vers la gauche ou la droite
+void turn(sens s, int duree){
+  if(s==gauche)
+  {
+    OnRev(OUT_A, speed_movement_rot);
+    OnFwd(OUT_B, speed_movement_rot);
+    Wait(duree);
+    Off(OUT_AB);
+  }
+  else if(s==droite)
+  {
+     OnRev(OUT_B, speed_movement_rot);
+     OnFwd(OUT_A, speed_movement_rot);
+     Wait(duree);
+     Off(OUT_AB);
+  }
+}
+
+int detection_ligne_blanche(){
+     int res;
+    char lum = SENSOR_3;
+         if(lum > light_white)
+         {
+             res=1;
+         }
+         else
+             res=0;
+    return res;
+}
+
+/*
+void solve_labyrinth(){
+     int right;
+     int left;
+     int front; //devant
+     //initialisation
+     right=0;
+     left=0;
+     front=0;
+     SetSensorLight(IN_4);
+
+         while (detection_ligne_blanche() == 1){
+             avancer(duree_fw);
+         }
+         front=0; //on ne peut plus avancer
+         turn(gauche);
+
+             if(detection_ligne_blanche() == 0){
+                 left=1;//on peut tourner à gauche
+             }
+             //else
+                 //left=0;  //on ne peut pas tourner à gauche
+         turn(droite);//on revient en position initial
+         turn(droite); //on tourne à droite
+             if(detection_ligne_blanche()==0){
+                 right=1;//on peut tourner à droite
+             }
+             //else
+               //  right==0;
+
+         turn(left);//on revient en position initiale
+
+         if(right==1){
+             turn(droite);
+             solve_labyrinth();
+         }
+         else if( left==1){
+              turn(gauche);
+              solve_labyrinth;
+         }
+         else //if(left==0 && right==0)
+
+}
+*/
+
+task main(){
+     /*SetSensorLight(IN_3);      */
+    /* OnRevReg(OUT_AB,speed_movement,OUT_REGMODE_SYNC); */
+     /*avancer(1500);*/
+     turn(gauche,1030);
+     Wait(SEC_3);
+     turn(droite,1030);
+    /* detection_ligne_blanche();  */
+}
