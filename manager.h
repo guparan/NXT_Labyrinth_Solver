@@ -22,4 +22,5 @@ int manager_ajouterNoeud(Manager m, Noeud n);
 
 Noeud manager_getNoeud(Manager m, int id);
 
+
 #endif
