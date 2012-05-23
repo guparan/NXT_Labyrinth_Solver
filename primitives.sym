@@ -1,0 +1,394 @@
+#SYMBOLS
+Index	Identifier	Type	Flag	Data	Size	RefCount
+0	__D0one_motor_Rev	6	1	0	4	2
+1	__D0turn	6	1	4	4	2
+2	__DU0turn	5	1	8	4	4
+3	__D0detection_ligne_blanche	6	1	12	4	5
+4	__D0main	6	1	16	4	3
+5	__D0one_motor_Fwd	6	1	20	4	2
+6	__D0SetSensorLight_inline_main	6	1	24	4	3
+7	__signed_stack_001main	6	1	28	4	2
+8	__unsigned_stack_001turn	5	1	32	4	4
+9	__Wait_7qG2_ms_7qG2_000_inline_avancer	5	1	36	4	2
+10	__DU0SetSensorLight_inline_main	5	1	40	4	2
+11	__signed_stack_001avancerReg	6	1	44	4	2
+12	__signed_stack_001detection_ligne_blanche	6	1	48	4	2
+13	__DU0avancerReg	5	1	52	4	2
+14	__Wait_7qG2_ms_7qG2_000_inline_main	5	1	56	4	8
+15	__OnRevMutex	9	0	60	4	6
+16	__Wait_7qG2_ms_7qG2_000_inline_turn	5	1	64	4	4
+17	__turn_7qG2_duree_7qG2_000	4	1	68	2	4
+18	__avancer_7qG2_duree_7qG2_000	4	1	70	2	3
+19	__detection_ligne_blanche_7qG2_res_7qG2_000	4	1	72	2	3
+20	__one_motor_Fwd_7qG2_output_7qG2_000	1	1	74	1	3
+21	__one_motor_Fwd_return	1	1	75	1	4
+22	__one_motor_Fwd_7qG2_pwr_7qG2_000	2	1	76	1	3
+23	__one_motor_Rev_return	1	1	77	1	4
+24	__avancer_return	1	1	78	1	4
+25	__constVal63	2	0	79	1	7
+26	__one_motor_Rev_7qG2_pwr_7qG2_000	2	1	80	1	3
+27	__one_motor_Rev_7qG2_output_7qG2_000	1	1	81	1	3
+28	__SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLight_inline_main	1	1	82	1	2
+29	____initialize_global_data_return	1	1	83	1	3
+30	__SetSensorLight_7qG2_port_7qG2_000_inline_main	1	1	84	1	4
+31	__detection_ligne_blanche_7qG2_lum_7qG2_000	2	1	85	1	2
+32	__turn_return	1	1	86	1	4
+33	__detection_ligne_blanche_return	1	1	87	1	4
+34	__SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLight_inline_main	1	1	88	1	2
+35	__SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLight_inline_main	1	1	89	1	2
+36	__turn_7qG2_s_7qG2_000	1	1	90	1	4
+37	__SetSensorLight_7qG2_bActive_7qG2_000_inline_main	1	1	91	1	2
+38	__SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_main	1	1	92	1	2
+39	__constVal2	2	0	93	1	1
+40	____ResetSensorSubroutine_return	1	1	94	1	3
+41	__ResetSensorTmp	1	1	95	1	2
+42	__zfdetection_ligne_blanche	1	1	96	1	3
+43	__constVal7	2	0	97	1	2
+44	__PFTmp	1	1	98	1	1
+45	__constVal1	2	0	99	1	2
+46	__constVal32	2	0	100	1	21
+47	__OnRev_Tmp	2	1	101	1	6
+48	__ResetSensorPort	1	1	102	1	3
+49	__constVal3	2	0	103	1	5
+50	__constVal0	2	1	104	1	22
+51	__avancerReg_7qG2_pwr_7qG2_000	2	1	105	1	2
+52	__avancerReg_7qG2_output_7qG2_000	1	1	106	1	2
+53	light_white	2	0	107	1	1
+54	__constVal96	2	0	108	1	7
+55	__avancerReg_return	1	1	109	1	3
+56	__avancerReg_7qG2_regmode_7qG2_000	1	1	110	1	2
+57	droite	1	1	111	1	2
+58	__zfSetSensorLight_inline_main	1	1	112	1	2
+59	__zfturn	1	1	113	1	6
+60	speed_movement	2	0	114	1	2
+61	speed_movement_rot	2	0	115	1	4
+62	gauche	1	0	116	1	2
+63	__OUT_AB	7	0	118	4	4
+64	__OUT_AB.__OUT_AB_type	1	0	0	1	0
+#SOURCES
+Clump	Line	PC	Source
+0	126	0	#line 126 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	127	0		subcall __initialize_global_data, ____initialize_global_data_return
+0	126	2	#line 126 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	126	2	#line 126 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	127	2		set __SetSensorLight_7qG2_port_7qG2_000_inline_main, 2
+0	126	5	#line 126 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	127	5	#line 127 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	128	5		mov __SetSensorLight_7qG2_bActive_7qG2_000_inline_main, __constVal1
+0	3729	7	#line 3729 "NXCDefs.h"
+0	3730	7		mov __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_main, __SetSensorLight_7qG2_port_7qG2_000_inline_main
+0	3729	9	#line 3729 "NXCDefs.h"
+0	3729	9	#line 3729 "NXCDefs.h"
+0	3730	9		mov __DU0SetSensorLight_inline_main, __SetSensorLight_7qG2_bActive_7qG2_000_inline_main
+0	3729	11	#line 3729 "NXCDefs.h"
+0	3730	11		tst 5, __zfSetSensorLight_inline_main, __DU0SetSensorLight_inline_main
+0	3729	14	#line 3729 "NXCDefs.h"
+0	3730	14		brtst 4, __001__NXC_Label_4, __zfSetSensorLight_inline_main
+0	3729	17	#line 3729 "NXCDefs.h"
+0	3730	17		set __D0SetSensorLight_inline_main, 5
+0	3729	20	#line 3729 "NXCDefs.h"
+0	3730	20		jmp __001__NXC_Label_5
+0	3729	22	#line 3729 "NXCDefs.h"
+0	3730	22		set __D0SetSensorLight_inline_main, 6
+0	3729	25	#line 3729 "NXCDefs.h"
+0	3730	25		mov __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLight_inline_main, __D0SetSensorLight_inline_main
+0	3663	27	#line 3663 "NXCDefs.h"
+0	3664	27		setin __SetSensorType_7qG2_type_7qG2_000_inline_SetSensorLight_inline_main, __SetSensorType_7qG2_port_7qG2_000_inline_SetSensorLight_inline_main, 0
+0	3663	31	#line 3663 "NXCDefs.h"
+0	3730	31	#line 3730 "NXCDefs.h"
+0	3730	31	#line 3730 "NXCDefs.h"
+0	3731	31		mov __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLight_inline_main, __SetSensorLight_7qG2_port_7qG2_000_inline_main
+0	3730	33	#line 3730 "NXCDefs.h"
+0	3730	33	#line 3730 "NXCDefs.h"
+0	3731	33		set __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLight_inline_main, 128
+0	3730	36	#line 3730 "NXCDefs.h"
+0	3676	36	#line 3676 "NXCDefs.h"
+0	3677	36		setin __SetSensorMode_7qG2_mode_7qG2_000_inline_SetSensorLight_inline_main, __SetSensorMode_7qG2_port_7qG2_000_inline_SetSensorLight_inline_main, 1
+0	3676	40	#line 3676 "NXCDefs.h"
+0	3731	40	#line 3731 "NXCDefs.h"
+0	3731	40	#line 3731 "NXCDefs.h"
+0	3731	40	#line 3731 "NXCDefs.h"
+0	3694	40	#line 3694 "NXCDefs.h"
+0	3695	40	#pragma macro 4
+0	3695	40		mov __ResetSensorPort, __SetSensorLight_7qG2_port_7qG2_000_inline_main
+0	3695	42		subcall __ResetSensorSubroutine, ____ResetSensorSubroutine_return
+0	4540	44	#line 4540 "NXCDefs.h"
+0	3694	44	#line 3694 "NXCDefs.h"
+0	3732	44	#line 3732 "NXCDefs.h"
+0	127	44	#line 127 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	127	44	#line 127 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	128	44		mov __signed_stack_001main, speed_movement
+0	127	46	#line 127 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	127	46	#line 127 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	128	46		set __D0main, 2
+0	129	49	#line 129 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	130	49	#pragma macro 10
+0	130	49		acquire __OnRevMutex
+0	130	50		neg __OnRev_Tmp, __signed_stack_001main
+0	130	53		setout __OUT_AB, 2, __OnRev_Tmp, 1, __constVal7, 8, __D0main, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+0	130	76		release __OnRevMutex
+0	4555	77	#line 4555 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	129	77	#line 129 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	129	77	#line 129 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	130	77		set __Wait_7qG2_ms_7qG2_000_inline_main, 2000
+0	129	80	#line 129 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	7921	80	#line 7921 "NXCDefs.h"
+0	7922	80		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_main
+0	7921	83	#line 7921 "NXCDefs.h"
+0	130	83	#line 130 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	130	83	#line 130 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	131	83		mov __turn_7qG2_s_7qG2_000, gauche
+0	130	85	#line 130 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	130	85	#line 130 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	131	85		set __turn_7qG2_duree_7qG2_000, 750
+0	130	88	#line 130 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	131	88	#line 131 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	132	88		subcall turn, __turn_return
+0	131	90	#line 131 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	131	90	#line 131 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	132	90		set __Wait_7qG2_ms_7qG2_000_inline_main, 2000
+0	131	93	#line 131 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	7921	93	#line 7921 "NXCDefs.h"
+0	7922	93		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_main
+0	7921	96	#line 7921 "NXCDefs.h"
+0	132	96	#line 132 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	132	96	#line 132 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	133	96		set __avancer_7qG2_duree_7qG2_000, 2000
+0	132	99	#line 132 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	133	99	#line 133 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	134	99		subcall avancer, __avancer_return
+0	133	101	#line 133 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	133	101	#line 133 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	134	101		set __Wait_7qG2_ms_7qG2_000_inline_main, 2000
+0	133	104	#line 133 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	7921	104	#line 7921 "NXCDefs.h"
+0	7922	104		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_main
+0	7921	107	#line 7921 "NXCDefs.h"
+0	134	107	#line 134 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	134	107	#line 134 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	135	107		mov __turn_7qG2_s_7qG2_000, droite
+0	134	109	#line 134 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	134	109	#line 134 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	135	109		set __turn_7qG2_duree_7qG2_000, 750
+0	134	112	#line 134 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	135	112	#line 135 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	136	112		subcall turn, __turn_return
+0	135	114	#line 135 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	135	114	#line 135 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	136	114		set __Wait_7qG2_ms_7qG2_000_inline_main, 2000
+0	135	117	#line 135 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	7921	117	#line 7921 "NXCDefs.h"
+0	7922	117		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_main
+0	7921	120	#line 7921 "NXCDefs.h"
+0	136	120	#line 136 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	136	120	#line 136 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	137	120		set __avancer_7qG2_duree_7qG2_000, 2000
+0	136	123	#line 136 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	137	123	#line 137 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	138	123		subcall avancer, __avancer_return
+0	137	125	#line 137 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	138	125	#line 138 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	139	125		subcall detection_ligne_blanche, __detection_ligne_blanche_return
+0	138	127	#line 138 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	139	127		mov __D0main, __D0detection_ligne_blanche
+0	138	129	#line 138 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+0	139	129		exit -1, -1
+1	4885	0		setin __constVal1, __ResetSensorPort, 5
+1	4887	4		getin __ResetSensorTmp, __ResetSensorPort, 5
+1	4888	8		brtst 5, __SensorStillInvalid, __ResetSensorTmp
+1	4889	11		subret ____ResetSensorSubroutine_return
+2	22	0	#line 22 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+2	23	0		mov __signed_stack_001avancerReg, __avancerReg_7qG2_pwr_7qG2_000
+2	22	2	#line 22 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+2	22	2	#line 22 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+2	23	2		mov __DU0avancerReg, __avancerReg_7qG2_regmode_7qG2_000
+2	23	4	#line 23 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+2	24	4	#pragma macro 10
+2	24	4		acquire __OnRevMutex
+2	24	5		neg __OnRev_Tmp, __signed_stack_001avancerReg
+2	24	8		setout __avancerReg_7qG2_output_7qG2_000, 2, __OnRev_Tmp, 1, __constVal7, 8, __DU0avancerReg, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+2	24	31		release __OnRevMutex
+2	4077	32	#line 4077 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+2	23	32	#line 23 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+2	25	32	#line 25 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+2	26	32		subret __avancerReg_return
+3	31	0	#line 31 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	32	0		set __avancerReg_7qG2_output_7qG2_000, 3
+3	31	3	#line 31 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	31	3	#line 31 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	32	3		mov __avancerReg_7qG2_pwr_7qG2_000, speed_movement
+3	31	5	#line 31 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	31	5	#line 31 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	32	5		set __avancerReg_7qG2_regmode_7qG2_000, 2
+3	31	8	#line 31 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	32	8	#line 32 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	33	8		subcall avancerReg, __avancerReg_return
+3	32	10	#line 32 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	32	10	#line 32 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	33	10		mov __Wait_7qG2_ms_7qG2_000_inline_avancer, __avancer_7qG2_duree_7qG2_000
+3	32	12	#line 32 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	7921	12	#line 7921 "NXCDefs.h"
+3	7922	12		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_avancer
+3	7921	15	#line 7921 "NXCDefs.h"
+3	33	15	#line 33 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	34	15	#line 34 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	35	15	#pragma macro 7
+3	35	15		setout __OUT_AB, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+3	4154	38	#line 4154 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	34	38	#line 34 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	36	38	#line 36 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+3	37	38		subret __avancer_return
+4	43	0	#line 43 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+4	44	0		mov __D0one_motor_Rev, __one_motor_Rev_7qG2_pwr_7qG2_000
+4	44	2	#line 44 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+4	45	2	#pragma macro 7
+4	45	2		setout __one_motor_Rev_7qG2_output_7qG2_000, 2, __D0one_motor_Rev, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+4	4221	25	#line 4221 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+4	44	25	#line 44 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+4	46	25	#line 46 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+4	47	25		subret __one_motor_Rev_return
+5	47	0	#line 47 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+5	48	0		mov __D0one_motor_Fwd, __one_motor_Fwd_7qG2_pwr_7qG2_000
+5	48	2	#line 48 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+5	49	2	#pragma macro 10
+5	49	2		acquire __OnRevMutex
+5	49	3		neg __OnRev_Tmp, __D0one_motor_Fwd
+5	49	6		setout __one_motor_Fwd_7qG2_output_7qG2_000, 2, __OnRev_Tmp, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+5	49	29		release __OnRevMutex
+5	4241	30	#line 4241 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+5	48	30	#line 48 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+5	51	30	#line 51 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+5	52	30		subret __one_motor_Fwd_return
+6	52	0	#line 52 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	53	0		mov __unsigned_stack_001turn, __turn_7qG2_s_7qG2_000
+6	52	2	#line 52 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	53	2	#line 53 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	54	2		mov __DU0turn, gauche
+6	53	4	#line 53 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	54	4		cmp 4, __zfturn, __unsigned_stack_001turn, __DU0turn
+6	53	8	#line 53 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	54	8		mov __D0turn, __zfturn
+6	54	10	#line 54 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	55	10		brtst 4, __NXC_Label_519, __zfturn
+6	54	13	#line 54 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	55	13		set __one_motor_Fwd_7qG2_output_7qG2_000, 0
+6	54	16	#line 54 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	54	16	#line 54 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	55	16		mov __one_motor_Fwd_7qG2_pwr_7qG2_000, speed_movement_rot
+6	54	18	#line 54 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	55	18	#line 55 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	56	18		subcall one_motor_Fwd, __one_motor_Fwd_return
+6	55	20	#line 55 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	55	20	#line 55 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	56	20		set __one_motor_Rev_7qG2_output_7qG2_000, 1
+6	55	23	#line 55 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	55	23	#line 55 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	56	23		mov __one_motor_Rev_7qG2_pwr_7qG2_000, speed_movement_rot
+6	55	25	#line 55 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	56	25	#line 56 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	57	25		subcall one_motor_Rev, __one_motor_Rev_return
+6	56	27	#line 56 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	56	27	#line 56 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	57	27		mov __Wait_7qG2_ms_7qG2_000_inline_turn, __turn_7qG2_duree_7qG2_000
+6	56	29	#line 56 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	7921	29	#line 7921 "NXCDefs.h"
+6	7922	29		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_turn
+6	7921	32	#line 7921 "NXCDefs.h"
+6	57	32	#line 57 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	58	32	#line 58 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	59	32	#pragma macro 7
+6	59	32		setout __OUT_AB, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+6	4315	55	#line 4315 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	58	55	#line 58 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	59	55	#line 59 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	60	55		jmp __NXC_Label_530
+6	59	57	#line 59 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	60	57		mov __unsigned_stack_001turn, __turn_7qG2_s_7qG2_000
+6	59	59	#line 59 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	60	59	#line 60 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	61	59		mov __DU0turn, droite
+6	60	61	#line 60 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	61	61		cmp 4, __zfturn, __unsigned_stack_001turn, __DU0turn
+6	60	65	#line 60 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	61	65		mov __D0turn, __zfturn
+6	61	67	#line 61 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	62	67		brtst 4, __NXC_Label_533, __zfturn
+6	61	70	#line 61 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	62	70		set __one_motor_Fwd_7qG2_output_7qG2_000, 1
+6	61	73	#line 61 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	61	73	#line 61 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	62	73		mov __one_motor_Fwd_7qG2_pwr_7qG2_000, speed_movement_rot
+6	61	75	#line 61 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	62	75	#line 62 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	63	75		subcall one_motor_Fwd, __one_motor_Fwd_return
+6	62	77	#line 62 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	62	77	#line 62 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	63	77		set __one_motor_Rev_7qG2_output_7qG2_000, 0
+6	62	80	#line 62 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	62	80	#line 62 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	63	80		mov __one_motor_Rev_7qG2_pwr_7qG2_000, speed_movement_rot
+6	62	82	#line 62 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	63	82	#line 63 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	64	82		subcall one_motor_Rev, __one_motor_Rev_return
+6	63	84	#line 63 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	63	84	#line 63 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	64	84		mov __Wait_7qG2_ms_7qG2_000_inline_turn, __turn_7qG2_duree_7qG2_000
+6	63	86	#line 63 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	7921	86	#line 7921 "NXCDefs.h"
+6	7922	86		wait2 NA, __Wait_7qG2_ms_7qG2_000_inline_turn
+6	7921	89	#line 7921 "NXCDefs.h"
+6	64	89	#line 64 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	65	89	#line 65 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	66	89	#pragma macro 7
+6	66	89		setout __OUT_AB, 2, __constVal0, 1, __constVal3, 8, __constVal0, 6, __constVal32, 7, __constVal0, 5, __constVal0, 10, __constVal96, 11, __constVal32, 12, __constVal32, 0, __constVal63
+6	4375	112	#line 4375 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	65	112	#line 65 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	68	112	#line 68 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	68	112	#line 68 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	68	112	#line 68 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+6	69	112		subret __turn_return
+7	70	0	#line 70 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	71	0		getin __detection_ligne_blanche_7qG2_lum_7qG2_000, __constVal2, 4
+7	70	4	#line 70 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	71	4	#line 71 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	72	4		mov __signed_stack_001detection_ligne_blanche, __detection_ligne_blanche_7qG2_lum_7qG2_000
+7	71	6	#line 71 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	72	6	#line 72 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	73	6		mov __D0detection_ligne_blanche, light_white
+7	72	8	#line 72 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	73	8		cmp 1, __zfdetection_ligne_blanche, __signed_stack_001detection_ligne_blanche, __D0detection_ligne_blanche
+7	72	12	#line 72 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	73	12		mov __D0detection_ligne_blanche, __zfdetection_ligne_blanche
+7	73	14	#line 73 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	74	14		brtst 4, __NXC_Label_548, __zfdetection_ligne_blanche
+7	74	17	#line 74 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	75	17		set __detection_ligne_blanche_7qG2_res_7qG2_000, 1
+7	74	20	#line 74 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	74	20	#line 74 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	76	20	#line 76 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	77	20		jmp __NXC_Label_551
+7	77	22	#line 77 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	78	22		set __detection_ligne_blanche_7qG2_res_7qG2_000, 0
+7	77	25	#line 77 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	77	25	#line 77 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	77	25	#line 77 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	78	25	#line 78 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	79	25		mov __D0detection_ligne_blanche, __detection_ligne_blanche_7qG2_res_7qG2_000
+7	78	27	#line 78 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	79	27		subret __detection_ligne_blanche_return
+7	78	29	#line 78 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	125	29	#line 125 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+7	126	29		subret __detection_ligne_blanche_return
+8	141	0	#line 141 "C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc"
+8	142	0		subret ____initialize_global_data_return
+#CLUMPS
+Clump	Name	Offset	File
+0	main	0	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
+1	__ResetSensorSubroutine	132	NXTDefs.h
+2	avancerReg	145	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
+3	avancer	179	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
+4	one_motor_Rev	219	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
+5	one_motor_Fwd	246	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
+6	turn	278	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
+7	detection_ligne_blanche	392	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
+8	__initialize_global_data	423	C:\Users\Quentin\Documents\ENSIIE\projet_solveur_labyrinth\primitives.nxc
