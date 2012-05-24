@@ -1,0 +1,34 @@
+#define TAILLE_PILE 1024
+#define TAILLE_X 10
+#define TAILLE_Y 10
+
+typedef int nb_routes;
+
+struct Case {
+	int x;
+	int y;
+};
+
+nb_routes manager_routes[TAILLE_X][TAILLE_Y];
+Case pile_pivots[TAILLE_PILE];
+int pile_tete;
+
+/* définition des fonctions */
+#include "manager.c"
+#include "pile.c"
+
+task main ()
+{
+     int i,j;
+     manager_initManager();
+     pile_initPile();
+     
+     if(manager_estVide() && pile_estVide())
+     {
+          TextOut(0, LCD_LINE1, "Init OK");
+     }
+     
+     manager_setRoutes(154, 0, 2);
+     
+     Wait(SEC_10);
+}
