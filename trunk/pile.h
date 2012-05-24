@@ -1,38 +1,21 @@
-#include "manager.h"
-#define TAILLE_MAX valeur  // /!\ à définir
+//#ifndef PILE_H
+//#define PILE_H
 
+#include "case.c"
+/*
 struct Pile 
 {
-	Coord tab[TAILLE_MAX]; // tableau qui contient les coordonnees
+	Case tab[TAILLE_PILE]; // tableau qui contient les coordonnees
 	int id_queue; // indice du dernier element du tableau
 };
+*/
 
-Coord initialiserCoord() 
-{
-	Coord c;
-	c.x = -1;
-	c.y = -1;
-return c;
-}
+bool pile_estVide();
+void pile_initPile();
 
-Pile creerPile()
-{
-	Pile p;
-	p.tab[0] = initialiserCoord();
-	p.id_queue = 0;
-return p;
-}
+void pile_empiler(int x, int y);
+void pile_depiler();
+Case pile_top();
 
-Pile empiler(Pile p, Coord c)
-{
-	p.id_queue++;
-	p.tab[p.id_queue] = c;
-return p;
-}
 
-Pile depiler(Pile p)
-{
-	p.tab[id_queue] = initialiserCoord();
-	p.id_queue--;
-return p;
-}
+//#endif
