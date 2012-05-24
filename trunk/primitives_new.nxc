@@ -1,6 +1,5 @@
 //Solveur de Labyrinth
 
-
 //Disposition des moteurs :
 // A :  gauche
 // B :  droite
@@ -8,15 +7,22 @@
 // angle négatif : sens trigo
 // angle positif : sens anti trigo
 
+
 // sens de rotation
 enum sens{droite, gauche};
 
 char speed_movement_rot = 70; //à regler
 char speed_movement_back = 100;  //à regler
 char speed_movement = 100;  //à regler
-char duree_fw = 15000;  // à regler
+char duree_fw = 15000;  // peut être pas nécessaire (le robot va jusqu'a la ligne)
 char duree_rot = 500;  // à regler
 char light_white = 45;  // à regler
+int ROUGE= 60  ;
+int BLANC=63   ;       //     /!\ ces valeurs dépendent grandement de la luminosité
+int NOIR = 42   ;      //     noir et blanc assez simple à differencier
+int BLEU =47    ;      // reste une troisieme couleur a définir pour la sortie
+int JAUNE=52    ;      // rouge et jaune eliminé car pr le capteur jaune~rouge~blanc
+
 //taille du robot : 19,5 cm * 13 cm   (longeur * largeur)
 //centre de pivotement : 8,5cm(distance du)
 
@@ -90,48 +96,58 @@ void solve_labyrinth(){
      right=0;
      left=0;
      front=0;
-     SetSensorLight(IN_4);
-
-         while (detection_ligne_blanche() == 1){
-             avancer(duree_fw);
-         }
-         front=0; //on ne peut plus avancer
-         turn(gauche);
-
-             if(detection_ligne_blanche() == 0){
-                 left=1;//on peut tourner à gauche
-             }
-             //else
-                 //left=0;  //on ne peut pas tourner à gauche
-         turn(droite);//on revient en position initial
-         turn(droite); //on tourne à droite
-             if(detection_ligne_blanche()==0){
-                 right=1;//on peut tourner à droite
-             }
-             //else
-               //  right==0;
-
-         turn(left);//on revient en position initiale
-
-         if(right==1){
-             turn(droite);
-             solve_labyrinth();
-         }
-         else if( left==1){
-              turn(gauche);
-              solve_labyrinth;
-         }
-         else //if(left==0 && right==0)
+     SetSensorLight(IN_3);
+     
+           while(// le robot n'a pas atteint la sortie)
+           {
+                while(detection_ligne_blanche()==)//d'abord il avance d'une case
+                {//avancer}
+           
+           
+           
+           }
 
 }
 */
 
+void test_lum()
+{
+     int lum;   //couleur
+     string strlum; // string de la couleur
+     string couleur;
+     string message1,message2 ;
+      SetSensorLight(IN_3);
+          do
+          {
+               lum=Sensor(IN_3);
+              if(lum>=BLANC) couleur="blanc";
+               else if(lum>=ROUGE && lum<BLANC) couleur="rouge";
+              else if(lum>=JAUNE && lum <ROUGE) couleur="jaune";
+              else if(lum>=BLEU && lum<JAUNE) couleur="bleu";
+              else if(lum<BLEU) couleur="noir";
+              else couleur="unknow";
+              strlum=NumToStr(lum)  ;
+              message1=StrCat("valeur :", strlum);
+              message2=StrCat("couleur :", couleur);
+              TextOut(5, LCD_LINE3, message1);
+              TextOut(5,LCD_LINE4,message2);
+                Wait(100); // 10 mesures par seconde
+           } while(true);
+}
+
 task main(){
-     /*SetSensorLight(IN_3);      */
+
+     test_lum();
+
     /* OnRevReg(OUT_AB,speed_movement,OUT_REGMODE_SYNC); */
      /*avancer(1500);*/
+    /* while(detection_ligne_blanche()==0)
+     {
+        avancer(SEC_2);
+        Wait(SEC_2);
+     }
      turn(gauche,1030);
-     Wait(SEC_3);
+     Wait(SEC_2);
      turn(droite,1030);
     /* detection_ligne_blanche();  */
 }
