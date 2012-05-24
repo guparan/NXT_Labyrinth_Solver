@@ -44,6 +44,7 @@ int JAUNE=52    ;      // rouge et jaune eliminé car pr le capteur jaune~rouge~b
 
 /* Fonctions */
 
+/*
 void avancerReg(byte output, char pwr, byte regmode)
 {
      OnRevReg(output,pwr,regmode);
@@ -53,13 +54,14 @@ void reculerReg(byte output, char pwr, byte regmode)
 {
      OnFwdReg(output,pwr,regmode);
 }
+*/
 
 //fait avancer le robot d'une certaine distance
 void avancer(int duree)
 {
    avancerReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
    Wait(duree);
-   Off(OUT_AB);
+   //Off(OUT_AB);
 }
 
 void reculer(int duree)
@@ -148,7 +150,9 @@ void test_lum()
 
 task main()
 {
-     test_lum();
+     avancerReg(OUT_AB, 100, OUT_REGMODE_SYNC);
+      Wait(SEC_10);
+     //test_lum();
 
     /* OnRevReg(OUT_AB,speed_movement,OUT_REGMODE_SYNC); */
      /*avancer(1500);*/
