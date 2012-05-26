@@ -23,14 +23,14 @@ c.a.d le centre d'un rectangle 19,5*13 cm²
 // angle négatif : sens trigo
 // angle positif : sens anti trigo
 
-// sens de rotation
-enum sens{droite, gauche};
-
+// sens de rotation:
+//enum sens{droite, gauche};
+/*
 char speed_movement_rot = 70; //à regler
 char speed_movement_back = 100;  //à regler
 char speed_movement = 100;  //à regler
 char duree_fw = 15000;  // peut être pas nécessaire (le robot va jusqu'a la ligne)
-char duree_rot = 500;  // à regler
+char duree_rot = 1030;
 char light_white = 45;  // à regler
 int ROUGE= 60  ;
 int BLANC=63   ;       //     /!\ ces valeurs dépendent grandement de la luminosité
@@ -40,33 +40,19 @@ int JAUNE=52    ;      // rouge et jaune eliminé car pr le capteur jaune~rouge~b
 
 //taille du robot : 19,5 cm * 13 cm   (longeur * largeur)
 //centre de pivotement : 8,5cm(distance du)
-
-
-/* Fonctions */
-
-/*
-void avancerReg(byte output, char pwr, byte regmode)
-{
-     OnRevReg(output,pwr,regmode);
-}
-
-void reculerReg(byte output, char pwr, byte regmode)
-{
-     OnFwdReg(output,pwr,regmode);
-}
 */
 
-//fait avancer le robot d'une certaine distance
-void avancer(int duree)
-{
-   avancerReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
-   Wait(duree);
-   //Off(OUT_AB);
+#include "primitives.h"
+
+/* Fonctions */
+//fait avancer le robot pdt un certain temps
+task avancer(){
+   OnRevReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
 }
 
-void reculer(int duree)
-{
-     reculerReg(OUT_AB, speed_movement,OUT_REGMODE_SYNC);
+//fait reculer le robot pdt un certain temps
+void reculer(int duree){
+     OnFwdReg(OUT_AB, speed_movement,OUT_REGMODE_SYNC);
      Wait(duree);
      Off(OUT_AB);
 }
@@ -90,38 +76,6 @@ void turn(sens s, int duree)
   }
 }
 
-int detection_ligne_blanche() 
-{
-     int res;
-    char lum = SENSOR_3;
-         if(lum > light_white)
-         {
-             res=1;
-         }
-         else
-             res=0;
-    return res;
-}
-
-/*
-void solve_labyrinth()
-{
-     int right;
-     int left;
-     int front; //devant
-     //initialisation
-     right=0;
-     left=0;
-     front=0;
-     SetSensorLight(IN_3);
-     
-           while(// le robot n'a pas atteint la sortie)
-           {
-                while(detection_ligne_blanche()==) //d'abord il avance d'une case
-                {//avancer}           
-           }
-}
-*/
 
 void test_lum()
 {
@@ -143,26 +97,24 @@ void test_lum()
               message1=StrCat("valeur :", strlum);
               message2=StrCat("couleur :", couleur);
               TextOut(5, LCD_LINE3, message1);
-              TextOut(5,LCD_LINE4,message2);
-                Wait(100); // 10 mesures par seconde
+              TextOut(5, LCD_LINE4, message2);
+              Wait(100); // 10 mesures par seconde
            } while(true);
 }
 
 task main()
 {
-     avancerReg(OUT_AB, 100, OUT_REGMODE_SYNC);
-      Wait(SEC_10);
-     //test_lum();
-
-    /* OnRevReg(OUT_AB,speed_movement,OUT_REGMODE_SYNC); */
+    // test_lum();
+      // avancer(SEC_2);
+    // OnRevReg(OUT_AB,speed_movement,OUT_REGMODE_SYNC);
      /*avancer(1500);*/
-    /* while(detection_ligne_blanche()==0)
-     {
-        avancer(SEC_2);
-        Wait(SEC_2);
-     }
-     turn(gauche,1030);
-     Wait(SEC_2);
-     turn(droite,1030);
-    /* detection_ligne_blanche();  */
+    // while(detection_ligne_blanche()==0)
+     //{
+       // avancer(SEC_2);
+       // Wait(SEC_2);
+    // }
+    // turn(gauche,1030);
+    // Wait(SEC_2);
+    // turn(droite,1030);
+    // detection_ligne_blanche();
 }
