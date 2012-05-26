@@ -1,0 +1,84 @@
+#include "primitives.h"
+
+
+task turn_on_light()
+{
+     int lum;
+     //SetSensorLight(IN_3);
+     lum=SENSOR_3;
+}
+
+task detection_ligne_blanche()
+{
+     while(true){
+         if(SENSOR_3 >= BLANC)
+         {
+             Off(OUT_AB);
+         }
+         else
+             Off(OUT_AB);
+     }
+
+}
+
+
+task detection_mur()
+{
+     int right,left;
+     while(true){
+     
+     if(SENSOR_3<=NOIR)
+     {
+          Off(OUT_AB);
+          turn(gauche,duree_rot);
+                  if(SENSOR_3>=BLANC)
+                  {
+                       left=1;
+                       turn(droite,duree_rot);
+                  }
+                  else if(SENSOR_3<=NOIR)
+                  {
+                       left=0;
+                       turn(droite,duree_rot);
+                  }
+          turn(droite,duree_rot);
+                  if(SENSOR_3>=BLANC)
+                  {
+                       right=1;
+                       turn(gauche,duree_rot);
+                  }
+                  else if(SENSOR_3<=NOIR)
+                  {
+                       right=0;
+                       turn(gauche,duree_rot);
+                  }
+           if((left==1 && right==1) || (left==1 && right==0))
+           {
+                 turn(gauche,duree_rot);
+           }
+           else if(left==0 && right==1)
+           {
+                 turn(droite,duree_rot);
+           }
+           else
+           //cul de sac
+          {
+                 reculer(duree_fw);
+                 Off(OUT_AB);
+         }
+     }
+    }
+}
+
+
+task main()
+{
+     SetSensorLight(IN_3);
+     Precedes(detection_ligne_blanche,detection_mur);
+     //start detection_mur;
+    // stop detection_ligne_blanche;
+    // stop detection_mur;
+}
+
+
+
