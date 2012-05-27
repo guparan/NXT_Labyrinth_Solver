@@ -29,11 +29,11 @@ c.a.d le centre d'un rectangle 19,5*13 cm²
 // angle positif : sens anti trigo
 
 
-char speed_movement_rot = 70; //à regler
+char speed_movement_rot = 90; //à regler
 char speed_movement_back = 100;  //à regler
 char speed_movement = 100;  //à regler
-char duree_fw = 15000;  // peut être pas nécessaire (le robot va jusqu'a la ligne)
-char duree_rot = 1030;
+char duree_fw = 3000;  // peut être pas nécessaire (le robot va jusqu'a la ligne)
+char duree_rot =720;
 char light_white = 45;  // à regler
 int ROUGE= 60  ;
 int BLANC=63   ;       //     /!\ ces valeurs dépendent grandement de la luminosité
@@ -44,10 +44,13 @@ int JAUNE=52    ;      // rouge et jaune eliminé car pr le capteur jaune~rouge~b
 //taille du robot : 19,5 cm * 13 cm   (longeur * largeur)
 //centre de pivotement : 8,5cm(distance du)
 
+int SORTIE=3518;
 
 
 // sens de rotation
 enum sens{droite, gauche};
+
+mutex moveMutex;
 
 task avancer();
 void reculer(int duree);

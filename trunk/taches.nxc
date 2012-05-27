@@ -1,11 +1,28 @@
 #include "primitives.h"
 
+task avancer(){
+     while(true){
+         Acquire(moveMutex);
+         OnRevReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
+        // OnRev(OUT_AB,speed_movement);Wait(500);
+         Release(moveMutex);
+     }
+}
 
-task turn_on_light()
+task detection_sortie()
 {
-     int lum;
-     //SetSensorLight(IN_3);
-     lum=SENSOR_3;
+     while(true){
+         if(SENSOR_3 >= BLEU && SENSOR_3 < JAUNE)   //47< sensor_3< 52
+              Off(OUT_AB);
+     }
+}
+
+task detection_mur()
+{
+     while(true){
+         if(SENSOR_3 <= NOIR)
+              Off(OUT_AB);
+     }
 }
 
 task detection_ligne_blanche()
@@ -13,71 +30,18 @@ task detection_ligne_blanche()
      while(true){
          if(SENSOR_3 >= BLANC)
          {
-             Off(OUT_AB);
-         }
-         else
-             Off(OUT_AB);
-     }
-
-}
-
-
-task detection_mur()
-{
-     int right,left;
-     while(true){
-     
-     if(SENSOR_3<=NOIR)
-     {
-          Off(OUT_AB);
-          turn(gauche,duree_rot);
-                  if(SENSOR_3>=BLANC)
-                  {
-                       left=1;
-                       turn(droite,duree_rot);
-                  }
-                  else if(SENSOR_3<=NOIR)
-                  {
-                       left=0;
-                       turn(droite,duree_rot);
-                  }
-          turn(droite,duree_rot);
-                  if(SENSOR_3>=BLANC)
-                  {
-                       right=1;
-                       turn(gauche,duree_rot);
-                  }
-                  else if(SENSOR_3<=NOIR)
-                  {
-                       right=0;
-                       turn(gauche,duree_rot);
-                  }
-           if((left==1 && right==1) || (left==1 && right==0))
-           {
-                 turn(gauche,duree_rot);
-           }
-           else if(left==0 && right==1)
-           {
-                 turn(droite,duree_rot);
-           }
-           else
-           //cul de sac
-          {
-                 reculer(duree_fw);
-                 Off(OUT_AB);
+            Acquire(moveMutex);
+            Off(OUT_AB) ;
+            //Wait(SEC_2);
+            Release(moveMutex);
          }
      }
-    }
 }
-
 
 task main()
 {
-     SetSensorLight(IN_3);
-     Precedes(detection_ligne_blanche,detection_mur);
-     //start detection_mur;
-    // stop detection_ligne_blanche;
-    // stop detection_mur;
+      Precedes(detection_ligne_blanche,avancer,detection_mur);
+      SetSensorLight(IN_3);
 }
 
 
