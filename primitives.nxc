@@ -23,14 +23,14 @@ c.a.d le centre d'un rectangle 19,5*13 cm²
 // angle négatif : sens trigo
 // angle positif : sens anti trigo
 
-// sens de rotation:
-//enum sens{droite, gauche};
-/*
-char speed_movement_rot = 70; //à regler
-char speed_movement_back = 100;  //à regler
-char speed_movement = 100;  //à regler
-char duree_fw = 15000;  // peut être pas nécessaire (le robot va jusqu'a la ligne)
-char duree_rot = 1030;
+//sens de rotation:
+enum sens{droite, gauche};
+
+int speed_movement_rot = 90; //à regler
+int speed_movement_back = 100;  //à regler
+int speed_movement = 100;  //à regler
+int duree_fw = 3000;  // peut être pas nécessaire (le robot va jusqu'a la ligne)
+int duree_rot = 720;
 char light_white = 45;  // à regler
 int ROUGE= 60  ;
 int BLANC=63   ;       //     /!\ ces valeurs dépendent grandement de la luminosité
@@ -40,16 +40,14 @@ int JAUNE=52    ;      // rouge et jaune eliminé car pr le capteur jaune~rouge~b
 
 //taille du robot : 19,5 cm * 13 cm   (longeur * largeur)
 //centre de pivotement : 8,5cm(distance du)
-*/
 
-#include "primitives.h"
+
+int SORTIE=3518;
+mutex moveMutex;
+
+//#include "primitives.h"
 
 /* Fonctions */
-//fait avancer le robot pdt un certain temps
-task avancer(){
-   OnRevReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
-}
-
 //fait reculer le robot pdt un certain temps
 void reculer(int duree){
      OnFwdReg(OUT_AB, speed_movement,OUT_REGMODE_SYNC);
@@ -75,8 +73,81 @@ void turn(sens s, int duree)
      Off(OUT_AB);
   }
 }
+/*
+int detection_sortie()
+{
+     int res;
+     SetSensorLight(IN_3);
+     res=SENSOR_3;
+         if(res >= BLEU && res < JAUNE)
+         {    res=1;         }
+         else
+         {    res=0;         }
+}
 
+int detection_mur()
+{
+     int res;
+     SetSensorLight(IN_3);
+     res=SENSOR_3;
+         if(res <= NOIR)
+         {    res=1;   }
+         else
+         {    res=0;         }
+     return res;
+}
 
+int detection_ligne_blanche()
+{
+     int res;
+     SetSensorLight(IN_3);
+     res=SENSOR_3;
+         if(res >= BLANC)
+         {    res=1;        }
+         else
+         {    res=0;        }
+     return res;
+}
+
+int possibilite_gauche()
+{
+      int left;
+      turn(gauche,duree_rot); //on regarde a gauche
+           if(detection_ligne_blanche()==1)
+               left=1;
+           else if(detection_sortie()==1)
+               left=SORTIE;
+           else
+               left=0;
+      turn(droite,duree_rot);//on revien en position initial
+      return left;
+}
+
+int possibilite_droite()
+{
+     int right;
+     turn(droite,duree_rot); //on regarde a droite
+           if(detection_ligne_blanche()==1)
+               right=1;
+
+           else if(detection_sortie()==1)
+                right=SORTIE;
+           else
+               right=0;
+     turn(droite,duree_rot);//on revient en position initial
+     return right;
+}
+
+int possibilite_tt_droit()
+{
+    int fwd;
+        if(detection_ligne_blanche()==1)
+           fwd=1;
+        else
+            fwd=0;
+}
+*/
+//UTILE POUR LE CALIBRAGE
 void test_lum()
 {
      int lum;   //couleur
@@ -110,11 +181,18 @@ task main()
      /*avancer(1500);*/
     // while(detection_ligne_blanche()==0)
      //{
-       // avancer(SEC_2);
+        //avancer(SEC_2);
        // Wait(SEC_2);
     // }
-    // turn(gauche,1030);
+     //turn(gauche,duree_rot);
     // Wait(SEC_2);
     // turn(droite,1030);
     // detection_ligne_blanche();
+
+    turn(gauche,duree_rot) ;Wait(SEC_2);turn(droite,duree_rot);Wait(SEC_2);turn(droite,duree_rot);
+    Wait(SEC_2);turn(gauche,duree_rot);Wait(SEC_2);
+     // avancer();Wait(duree_fw);Off(OUT_AB);Wait(SEC_2);
+      //reculer(duree_fw);
+
+
 }
