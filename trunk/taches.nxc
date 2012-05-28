@@ -53,26 +53,30 @@ task tache_avancer_une_case ()
      Wait(TEMPS_FRANCHISSEMENT_CASE);
      Precedes(tache_detection_ligne_blanche, tache_avancer);
      reculer(TEMPS_RETOUR_CENTRE);
-	 position_robot.x += direction_x; // gestion des coordonnees
-	 position_robot.y += direction_y; // gestion des coordonnees
+	 robot_position.x += direction_x; // gestion des coordonnees
+	 robot_position.y += direction_y; // gestion des coordonnees
 }
 
 task tache_verifier_cases_autour ()
 {
-     int i;
+	Direction relative;
+	Direction absolue;
+    int i;
     tourner(dir_gauche, DUREE_ROTATION);
     for(i=0 ; i<3 ; i++)
     {
         Precedes(tache_detection_ligne_noire, tache_detection_ligne_blanche, tache_avancer);
-        if(ligne_noire)
-        {
-    
-        }
-        else
-        {
-    
-        }
         reculer(TEMPS_RETOUR_CENTRE);
+		
+		if(i==0) relative=dir_gauche;
+		else if(i==1) relative=dir_haut;
+		else if(i==2) relative=dir_droite;
+		
+        if(ligne_noire) // le robot a detecte un mur
+        {
+			absolue = robot_DirectionRelativeToAbsolue(robot_position.x, robot_position.y, direction_x, direction_y, relative);
+			manager_setRoute(robot_position.x, robot_position.y, absolue, false);
+        }
         tourner(dir_droite, DUREE_ROTATION);
     }
     tourner(dir_gauche, DUREE_ROTATION);
