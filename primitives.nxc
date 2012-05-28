@@ -45,11 +45,16 @@ int JAUNE=52    ;      // rouge et jaune eliminé car pr le capteur jaune~rouge~b
 int SORTIE=3518;
 mutex moveMutex;
 
-//#include "primitives.h"
+//fait avancer le robot d'une certaine distance
+void avancer(int duree)
+{
+   OnRevReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
+   Wait(duree);
+   //Off(OUT_AB);
+}
 
-/* Fonctions */
-//fait reculer le robot pdt un certain temps
-void reculer(int duree){
+void reculer(int duree)
+{
      OnFwdReg(OUT_AB, speed_movement,OUT_REGMODE_SYNC);
      Wait(duree);
      Off(OUT_AB);
@@ -189,8 +194,15 @@ task main()
     // turn(droite,1030);
     // detection_ligne_blanche();
 
-    turn(gauche,duree_rot) ;Wait(SEC_2);turn(droite,duree_rot);Wait(SEC_2);turn(droite,duree_rot);
-    Wait(SEC_2);turn(gauche,duree_rot);Wait(SEC_2);
+    turn(gauche,duree_rot) ;
+    Wait(SEC_2);
+    turn(droite,duree_rot);
+    Wait(SEC_2);
+    turn(droite,duree_rot);
+    Wait(SEC_2);
+    turn(gauche,duree_rot);
+    Wait(SEC_2);
+    
      // avancer();Wait(duree_fw);Off(OUT_AB);Wait(SEC_2);
       //reculer(duree_fw);
 
