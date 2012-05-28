@@ -1,48 +1,81 @@
-#include "primitives.h"
+#include "primitives.nxc"
 
-task avancer(){
+mutex moveMutex;
+bool ligne_noire;
+
+task tache_avancer()
+{
      while(true){
          Acquire(moveMutex);
-         OnRevReg(OUT_AB, speed_movement, OUT_REGMODE_SYNC);
-        // OnRev(OUT_AB,speed_movement);Wait(500);
+         avancer(0);
          Release(moveMutex);
      }
 }
 
-task detection_sortie()
+task tache_detection_sortie()
 {
      while(true){
          if(SENSOR_3 >= BLEU && SENSOR_3 < JAUNE)   //47< sensor_3< 52
-              Off(OUT_AB);
+         {
+              arreter();
+         }
      }
 }
 
-task detection_mur()
-{
-     while(true){
-         if(SENSOR_3 <= NOIR)
-              Off(OUT_AB);
-     }
-}
-
-task detection_ligne_blanche()
+task tache_detection_ligne_blanche ()
 {
      while(true){
          if(SENSOR_3 >= BLANC)
          {
             Acquire(moveMutex);
-            Off(OUT_AB) ;
-            //Wait(SEC_2);
+            arreter();
             Release(moveMutex);
          }
      }
 }
 
-task main()
+task tache_detection_ligne_noire ()
 {
-      Precedes(detection_ligne_blanche,avancer,detection_mur);
-      SetSensorLight(IN_3);
+     while(true){
+         if(SENSOR_3 <= NOIR)
+         {
+            Acquire(moveMutex);
+            arreter();
+            ligne_noire=true;
+            Release(moveMutex);
+         }
+     }
 }
 
+task tache_avancer_une_case ()
+{
+     Precedes(tache_avancer);
+     Wait(TEMPS_FRANCHISSEMENT_CASE);
+     Precedes(tache_detection_ligne_blanche, tache_avancer);
+     reculer(TEMPS_RETOUR_CENTRE);
+	 position_robot.x += direction_x; // gestion des coordonnees
+	 position_robot.y += direction_y; // gestion des coordonnees
+}
+
+task tache_verifier_cases_autour ()
+{
+     int i;
+    tourner(dir_gauche, DUREE_ROTATION);
+    for(i=0 ; i<3 ; i++)
+    {
+        Precedes(tache_detection_ligne_noire, tache_detection_ligne_blanche, tache_avancer);
+        if(ligne_noire)
+        {
+    
+        }
+        else
+        {
+    
+        }
+        reculer(TEMPS_RETOUR_CENTRE);
+        tourner(dir_droite, DUREE_ROTATION);
+    }
+    tourner(dir_gauche, DUREE_ROTATION);
+}
 
 

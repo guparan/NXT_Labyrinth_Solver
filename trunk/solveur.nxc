@@ -1,6 +1,28 @@
+/*******************************************************************/
+
+#define POSITION_ROBOT_INITIALE_X 3
+#define POSITION_ROBOT_INITIALE_Y 0
+
+#define PUISSANCE_ROTATION 90
+#define PUISSANCE_MOTEUR 100
+#define DUREE_ROTATION 720
+
+#define TEMPS_FRANCHISSEMENT_CASE SEC_2
+#define TEMPS_RETOUR_CENTRE SEC_1
+
+#define ROUGE 60
+#define BLANC 63
+#define NOIR 42
+#define BLEU 47
+#define JAUNE 52
+
+#define SORTIE 3518
+
 #define TAILLE_PILE 50
-#define TAILLE_X 10
-#define TAILLE_Y 10
+#define TAILLE_LABYRINTHE_X 10
+#define TAILLE_LABYRINTHE_Y 10
+
+/*******************************************************************/
 
 typedef int nb_routes;
 
@@ -12,25 +34,34 @@ struct Case {
        int y;
 };
 
-bool manager_routes[TAILLE_X][TAILLE_Y][3];
+bool manager_routes[TAILLE_LABYRINTHE_X][TAILLE_LABYRINTHE_Y][3];
 int pile_pivots[TAILLE_PILE][2];
 int pile_tete;
+
+Case position_robot;
+int direction_x=0;
+int direction_y=1;
 
 /* définition des fonctions */
 #include "case.h"
 #include "pile.h"
 #include "manager.h"
 
+#include "taches.nxc"
+
+/*******************************************************************/
+
 task chercherSortie ()
 {
 
 }
 
-task resolution () // se placer dans la 1ere case AVANT
+task tache_resolution ()
 {
      /*
-       compter les routes et définir les possibilités
-       si nb_routes = 0
+     avancer d'une case
+     verifier les cases autour
+     si nb_routes = 0
            si la pile des pivots est vide -> coincé
            recupérer une case dans la pile des pivots
            calculer la route vers cette case
@@ -39,9 +70,7 @@ task resolution () // se placer dans la 1ere case AVANT
        si nb_routes > 1
            empiler la case dans la pile des pivots
        fin si
-
-       aller dans la premiere case dispo
-
+     se tourner vers la 1ere case libre
      */
 }
 
@@ -52,6 +81,8 @@ task main ()
      
      manager_initManager();
      pile_initPile();
+     position_robot.x = POSITION_ROBOT_INITIALE_X;
+     position_robot.y = POSITION_ROBOT_INITIALE_Y;
      
      pile_empiler(1,2);
      pile_empiler(3,4);
