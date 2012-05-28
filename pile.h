@@ -1,38 +1,82 @@
 
 bool pile_estVide()
 {
-	return pile_tete==0;
+	return pile_tete==-1;
 }
 
 void pile_initPile()
 {
-	int i;
+	int i,j;
 	for(i=0 ; i<TAILLE_PILE ; ++i)
-	{
-		pile_pivots[i][coord_x]=-1;
-		pile_pivots[i][coord_y]=-1;
+	{		
+		pile_pivots[i].coord.x = -1;
+		pile_pivots[i].coord.y = -1;
+		for(j=0 ; j<4 ; j++)
+		{
+			pile_pivots[i].possibilites[j] = true;
+		}
 	}	
-	pile_tete = 0;
+	pile_tete = -1;
 }
 
-void pile_empiler(int x, int y)
+void pile_empiler(int x, int y, bool gauche, bool droite, bool haut, bool bas)
 {
 	pile_tete++;
-	pile_pivots[pile_tete][coord_x] = x;
-	pile_pivots[pile_tete][coord_y] = y;	
+	pile_pivots[pile_tete].coord.x = x;
+	pile_pivots[pile_tete].coord.y = y;
+	pile_pivots[pile_tete].possibilites[dir_gauche]=gauche;
+	pile_pivots[pile_tete].possibilites[dir_droite]=droite;
+	pile_pivots[pile_tete].possibilites[dir_haut]=haut;
+	pile_pivots[pile_tete].possibilites[dir_bas]=bas;
 }
 
-void pile_depiler()
+int pile_depiler()
 {
-	pile_pivots[pile_tete][coord_x] = -1;
-	pile_pivots[pile_tete][coord_y] = -1;
-	pile_tete--;
+	int j;
+	if(pile_tete >= 0)
+	{
+		pile_pivots[pile_tete].coord.x = -1;
+		pile_pivots[pile_tete].coord.y = -1;
+		for(j=0 ; j<4 ; j++)
+		{
+			pile_pivots[pile_tete].possibilites[j] = true;
+		}
+		pile_tete--;
+	}
+	return pile_tete;
+}
+
+void pile_editer(Direction d, bool val)
+{
+  int i;
+	pile_pivots[pile_tete].possibilites[d]=val;
+
+	for(i=0 ; i<4 ; i++)
+	{
+		if(pile_pivots[pile_tete].possibilites[i]==true) return;
+	}
+	// toutes les possibilites du pivot de tete sont false
+	pile_depiler();
 }
 
 Case pile_top()
+{	
+	return pile_pivots[pile_tete].coord;
+}
+
+int pile_getPremierePossibilite()
 {
-	Case c;
-	c.x = pile_pivots[pile_tete][coord_x];
-	c.y = pile_pivots[pile_tete][coord_y];
-	return c;
+	int i;
+	for(i=0 ; i<4 ; i++)
+	{
+		if(pile_pivots[pile_tete].possibilites[i]==true) return i;
+	}
+	// le premier pivot est vide
+	pile_depiler();
+	return -1;
+}
+
+void pile_setPossibilite(Direction d, bool val)
+{
+	pile_pivots[pile_tete].possibilites[d]=val;
 }
