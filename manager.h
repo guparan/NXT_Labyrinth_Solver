@@ -2,9 +2,9 @@
 void manager_initManager()
 {
 	int i, j;
-	for(i=0 ; i<TAILLE_X ; i++)
+	for(i=0 ; i<TAILLE_LABYRINTHE_X ; i++)
 	{
-		for(j=0 ; j<TAILLE_Y ; j++)
+		for(j=0 ; j<TAILLE_LABYRINTHE_Y ; j++)
 		{
 			manager_routes[i][j][dir_gauche]=false;
 			manager_routes[i][j][dir_avant]=false;
@@ -16,9 +16,9 @@ void manager_initManager()
 bool manager_estVide()
 {
 	int i, j;
-	for(i=0 ; i<TAILLE_X ; i++)
+	for(i=0 ; i<TAILLE_LABYRINTHE_X ; i++)
 	{
-		for(j=0 ; j<TAILLE_Y ; j++)
+		for(j=0 ; j<TAILLE_LABYRINTHE_Y ; j++)
 		{
 			if( manager_routes[i][j][dir_gauche]
 				|| manager_routes[i][j][dir_avant]
@@ -40,7 +40,7 @@ int manager_nbRoutes(int x, int y)
 
 void manager_setRoute(int x, int y, bool gauche, bool avant, bool droite)
 {
-	if(x>=TAILLE_X || y>=TAILLE_Y) Stop(true);
+	if(x>=TAILLE_LABYRINTHE_X || y>=TAILLE_LABYRINTHE_Y) Stop(true);
 	manager_routes[x][y][dir_gauche] = gauche;
 	manager_routes[x][y][dir_avant] = avant;
 	manager_routes[x][y][dir_droite] = droite;
@@ -48,7 +48,7 @@ void manager_setRoute(int x, int y, bool gauche, bool avant, bool droite)
 
 bool manager_peutAller(int x, int y, Direction d)
 {
-	if(x>=TAILLE_X || y>=TAILLE_Y) Stop(true);
+	if(x>=TAILLE_LABYRINTHE_X || y>=TAILLE_LABYRINTHE_Y) Stop(true);
 	
 	return manager_routes[x][y][d];
 }
