@@ -26,7 +26,7 @@
 
 typedef int nb_routes;
 
-enum Direction {dir_gauche=0, dir_avant=1, dir_droite=2};
+enum Direction {dir_gauche=0, dir_droite=1, dir_haut=2, dir_bas=3};
 enum Coordonnee {coord_x=0, coord_y=1};
 
 struct Case {
@@ -38,7 +38,7 @@ bool manager_routes[TAILLE_LABYRINTHE_X][TAILLE_LABYRINTHE_Y][3];
 int pile_pivots[TAILLE_PILE][2];
 int pile_tete;
 
-Case position_robot;
+Case robot_position;
 int direction_x=0;
 int direction_y=1;
 
@@ -81,8 +81,8 @@ task main ()
      
      manager_initManager();
      pile_initPile();
-     position_robot.x = POSITION_ROBOT_INITIALE_X;
-     position_robot.y = POSITION_ROBOT_INITIALE_Y;
+     robot_position.x = POSITION_ROBOT_INITIALE_X;
+     robot_position.y = POSITION_ROBOT_INITIALE_Y;
      
      pile_empiler(1,2);
      pile_empiler(3,4);
@@ -92,10 +92,10 @@ task main ()
      NumOut(0, LCD_LINE1, c.x);
      NumOut(40, LCD_LINE1, c.y);
 
-     manager_setRoute(3, 4, true, false, true);
+     manager_setRoute(3, 4, dir_gauche, false);
      if(manager_peutAller(3, 4, dir_gauche)) TextOut(0, LCD_LINE2, "Gauche possible" );
      if(manager_peutAller(3, 4, dir_droite)) TextOut(0, LCD_LINE3, "Droite possible" );
-     if(manager_peutAller(3, 4, dir_avant)) TextOut(0, LCD_LINE4, "Avant possible" );
+     if(manager_peutAller(3, 4, dir_haut)) TextOut(0, LCD_LINE4, "Haut possible" );
      
      Wait(SEC_10);
 }

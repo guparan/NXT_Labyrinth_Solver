@@ -83,6 +83,59 @@ void tourner(Direction s, int duree)
 		Off(OUT_AB);
 	}
 }
+
+Direction robot_DirectionRelativeToAbsolue(int x, int y, int dir_x, int dir_y, Direction relative)
+{
+	switch(relative) {
+		case dir_gauche :
+			if(dir_y==-1) return dir_droite;
+			if(dir_y==1) return dir_gauche;
+			if(dir_x==1) return dir_haut;
+			if(dir_x==-1) return dir_bas;
+		case dir_droite :
+			if(dir_y==-1) return dir_gauche;
+			if(dir_y==1) return dir_droite;
+			if(dir_x==1) return dir_bas;
+			if(dir_x==-1) return dir_haut;
+		case dir_haut :
+			if(dir_y==-1) return dir_bas;
+			if(dir_y==1) return dir_haut;
+			if(dir_x==1) return dir_droite;
+			if(dir_x==-1) return dir_gauche;
+		case dir_bas :
+			if(dir_y==-1) return dir_haut;
+			if(dir_y==1) return dir_bas;
+			if(dir_x==1) return dir_gauche;
+			if(dir_x==-1) return dir_droite;
+	}
+}
+
+Direction robot_DirectionAbsolueToRelative(int x, int y, int dir_x, int dir_y, Direction absolue)
+{
+	switch(absolue) {
+		case dir_gauche :
+			if(dir_y==-1) return dir_droite;
+			if(dir_y==1) return dir_gauche;
+			if(dir_x==1) return dir_bas;
+			if(dir_x==-1) return dir_haut;
+		case dir_droite :
+			if(dir_y==-1) return dir_gauche;
+			if(dir_y==1) return dir_droite;
+			if(dir_x==1) return dir_haut;
+			if(dir_x==-1) return dir_bas;
+		case dir_haut :
+			if(dir_y==-1) return dir_bas;
+			if(dir_y==1) return dir_haut;
+			if(dir_x==1) return dir_gauche;
+			if(dir_x==-1) return dir_droite;
+		case dir_bas :
+			if(dir_y==-1) return dir_haut;
+			if(dir_y==1) return dir_bas;
+			if(dir_x==1) return dir_droite;
+			if(dir_x==-1) return dir_gauche;
+	}
+}
+
 /*
 int detection_sortie()
 {
