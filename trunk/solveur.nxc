@@ -34,8 +34,13 @@ struct Case {
        int y;
 };
 
-bool manager_routes[TAILLE_LABYRINTHE_X][TAILLE_LABYRINTHE_Y][3];
-int pile_pivots[TAILLE_PILE][2];
+struct Pivot {
+       Case coord;
+       bool possibilites[4];
+};
+
+bool manager_routes[TAILLE_LABYRINTHE_X][TAILLE_LABYRINTHE_Y][4];
+Pivot pile_pivots[TAILLE_PILE];
 int pile_tete;
 
 Case robot_position;
@@ -59,18 +64,20 @@ task chercherSortie ()
 task tache_resolution ()
 {
      /*
-     avancer d'une case
      verifier les cases autour
      si nb_routes = 0
            si la pile des pivots est vide -> coincé
-           recupérer une case dans la pile des pivots
-           calculer la route vers cette case
-           dépiler la pile des pivots
-       fin si
-       si nb_routes > 1
-           empiler la case dans la pile des pivots
-       fin si
-     se tourner vers la 1ere case libre
+           sinon aller sur le premier pivot de la pile
+           recupérer une possibilite dans la pile des pivots
+           editer la pile pour mettre cette possibilité à false
+           convertir la possibilité absolue en relative
+           aller sur cette possibilité
+     sinon si nb_routes > 1
+           empiler la case dans la pile des pivots avec les directions absolues
+           choisir une case parmis les cases libres
+     sinon si nb_routes = 1
+           aller sur la case libre
+     fin si
      */
 }
 
@@ -84,9 +91,9 @@ task main ()
      robot_position.x = POSITION_ROBOT_INITIALE_X;
      robot_position.y = POSITION_ROBOT_INITIALE_Y;
      
-     pile_empiler(1,2);
-     pile_empiler(3,4);
-     pile_empiler(5,6);
+     pile_empiler(1,2, true, false, true, false);
+     pile_empiler(3,4, true, false, true, false);
+     pile_empiler(5,6, true, false, true, false);
 
      Case c = pile_top();
      NumOut(0, LCD_LINE1, c.x);

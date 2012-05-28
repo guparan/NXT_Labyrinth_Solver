@@ -7,10 +7,14 @@ Case case_creerCase(int x, int y)
 	return c;
 }
 
-Case case_initCase()
+void case_initCase(Case &c)
 {
-	Case c;
 	c.x = -1;
 	c.y = -1;
-	return c;
+}
+
+void case_setCase(Case &c, int x, int y)
+{
+	c.x = x;
+	c.y = y;
 }
