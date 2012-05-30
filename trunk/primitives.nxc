@@ -32,12 +32,14 @@ void avancer(int duree)
 {
    OnRevReg(OUT_AB, PUISSANCE_MOTEUR, OUT_REGMODE_SYNC);
    Wait(duree);
+	Off(OUT_AB);
 }
 
 void reculer(int duree)
 {
      OnFwdReg(OUT_AB, PUISSANCE_MOTEUR,OUT_REGMODE_SYNC);
      Wait(duree);
+	Off(OUT_AB);
 }
 
 void arreter()
