@@ -5,14 +5,14 @@
 
 #define PUISSANCE_ROTATION 90
 #define PUISSANCE_MOTEUR 100
-#define DUREE_ROTATION 720
+#define DUREE_ROTATION 500
 
-#define TEMPS_FRANCHISSEMENT_CASE SEC_2
-#define TEMPS_RETOUR_CENTRE SEC_1
+#define TEMPS_FRANCHISSEMENT_CASE SEC_1
+#define TEMPS_RETOUR_CENTRE SEC_5
 
 #define ROUGE 60
-#define BLANC 63
-#define NOIR 42
+#define BLANC 65
+#define NOIR 45
 #define BLEU 47
 #define JAUNE 52
 
@@ -35,11 +35,11 @@ struct Case {
 };
 
 struct Pivot {
-       Case coord;
+       //Case coord;
        bool possibilites[4];
 };
 
-struct Element_pile_route {
+struct Etape {
        Direction dir;
        bool pivot;
 };
@@ -49,8 +49,8 @@ bool manager_routes[TAILLE_LABYRINTHE_X][TAILLE_LABYRINTHE_Y][4];
 Pivot pile_pivots[TAILLE_PILE];
 int pile_pivots_tete;
 
-Element_pile_route pile_route[TAILLE_PILE];
-int pile_route_tete;
+Etape pile_etapes[TAILLE_PILE];
+int pile_etapes_tete;
 
 
 Case robot_position;
@@ -93,7 +93,7 @@ task tache_resolution ()
 
 task main ()
 {
-     /* Tests */
+     /* Tests
      int i,j;
      
      manager_initManager();
@@ -115,4 +115,7 @@ task main ()
      if(manager_peutAller(3, 4, dir_haut)) TextOut(0, LCD_LINE4, "Haut possible" );
      
      Wait(SEC_10);
+     */
+     SetSensorLight(IN_3);
+     Precedes(tache_avancer_une_case);
 }
